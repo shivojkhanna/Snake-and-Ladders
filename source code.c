@@ -1,19 +1,19 @@
 //	Hi, My name is Shivoj Khanna.												//mail - shivojkhanna@gmail.com
 //	Here is the source code of snake and ladders game in C language by me.		//Whatsapp - 7497052589
-//I have written this code in Visual Studio Ultimate IDE
+//I have written this code in Visual Studio Code IDE
 
 
 #include<stdio.h>
 #include<conio.h>
 #include<time.h>			//time library,it was used to get the random number of dice. I've further explained  it in the dice function
 #include<stdlib.h>
+#include<windows.h>
 int dice();					//dice function for getting the dice
 int snake(int);				//Snake function 
 int ladder(int);			//Ladder function
 int arr[10][10],i,j,p1=0,p2=0;	//	Array function to get the 1 to 100 counting
 void counting()
 {
-	printf("\n\n");
 	int k=100;		// K will print in back form from 100 to 1 in a specific way of the game
 	for(i=0;i<10;i++)
 	{
@@ -55,7 +55,7 @@ void counting()
 		}
 		printf("\n");
 	}
-	printf("\n____________________________________________________________________________\n");
+	printf("____________________________________________________________________________\n");
 }
 
 int ladder(int a)
@@ -123,13 +123,13 @@ int snake(int a)
 	}
 	return(a);
 }
-void main()
+int main()
 {  		system("cls");		//to clear the screen. this "system" function is in <stdlib.h> lib
 		int ch,t;
-	printf("\t\t\tSnake and Ladders Game:\nRules:\n1. There will be 2 players.\n2. Dice values from 1-6.\n3.Players have to reach 100 to win.\n4.There are snakes to bring you down and Ladders to take you up.\n");
+	printf("\t\t\tSnake and Ladders Game:\nRules:\n1. There will be 2 players.\n2. Dice values from 1-6.\n3.Players have to reach 100 to win.\n4.There are snakes to bring you down and Ladders to take you up.");
 	start: //	label start, to use goto function to print counting with updated player position
 	counting();		//calling the counting function
-	 printf("\nSnake:	97-78	88-24	62-18	34-6\nLadder:	80-99	2-38	28-76\n\n");
+	 printf("\nSnake:	97-78	88-24	62-18	34-6\nLadder:	80-99	2-38	28-76\n");
 	printf("Press 1 for 1st player, 2 for 2nd and 8 for exit:\t");
 	scanf("%d",&ch);
 	switch(ch)
@@ -143,7 +143,9 @@ void main()
 		 system("cls");
 		printf("\nPosition of P1=%d\n",p1);
 		printf("\nDice= %d\n",dice());
+		printf("\033[0;32m");
 		printf("Player 1 win\n");
+		printf("\033[0m");
 		}
 		else if(p1>100)
 		{
@@ -158,7 +160,7 @@ void main()
 		 system("cls");
 		 p1=snake(p1);
 		p1=ladder(p1);
-		 printf("\n\t\tDice= %d\n",dice());
+		 printf("\t\tDice= %d",dice());
 		printf("\nPosition of P1=%d\n",p1);
 		goto start; }
 		break;
@@ -171,13 +173,15 @@ void main()
 		 system("cls");
 			printf("\nDice= %d\n",dice());
 		printf("\nPosition of P2=%d\n",p2);
+		printf("\033[0;32m");
 		printf("Player 2 win\n");
+		printf("\033[0m");
 		}
 		else if(p2>100)
 		{
 		 p2=t;
 		 system("cls");
-		 		printf("\nDice= %d\n",dice());
+		 		printf("\nDice= %d",dice());
 		 printf("\nPosition of P2=%d\n",p2);
 		 goto start;
 		}
@@ -186,7 +190,7 @@ void main()
 		 system("cls");
 		 p2=snake(p2);
 		p2=ladder(p2);
-		 		printf("\nDice= %d\n",dice());
+		 		printf("\nDice= %d",dice());
 		printf("\nPosition of P2=%d\n",p2);
 		goto start; }
 		break;
@@ -198,7 +202,7 @@ void main()
 		goto start;
 	}
 
-	getch();
+	return 0;
 }
 int dice()
  {
